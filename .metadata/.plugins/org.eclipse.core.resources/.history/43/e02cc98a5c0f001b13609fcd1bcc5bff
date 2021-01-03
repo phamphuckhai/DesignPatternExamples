@@ -1,0 +1,21 @@
+package Flyweight;
+
+import java.util.Hashtable;
+
+public class CharacterFactory {
+	private Hashtable pool = new Hashtable<String, Character>();
+	public int getNum() {
+	return pool.size();
+	}
+	public Character get(String symbol, String fontFace) {
+		Character c;
+		String key = symbol + fontFace;
+		if ((c = (Character)pool.get(key)) != null) {
+		 return c;
+		}else {
+			 c = new ConcreteCharacter(symbol, fontFace);
+			 pool.put(key, c);
+			 return c;
+			 }
+			 }
+			}
